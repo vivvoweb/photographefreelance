@@ -1,0 +1,186 @@
+/* 
+   Nom du fichier : lightbox-single-photo.css
+   Description : Ce fichier CSS définit les styles pour la fonction de lightbox sur le site.
+*/
+
+/* LIGHTBOX - SINGLE PHOTO - NAVIGATION*/
+/* Styles | Lightbox */
+
+.btn-close {
+  position: fixed;
+  top: 20px;
+  right: 320px;
+  color: #fff;
+  font-family: 'Montserrat', monospace;
+  font-size: 18px;
+  font-weight: 400;
+  padding: 15px;
+  max-width: 40px;
+  max-height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10001;
+}
+
+.btn-close:hover {
+  font-weight: 600;
+}
+
+.conteneur-droit img {
+  cursor: pointer;
+}
+
+.photo {
+  transition: filter 0.3s; /* Ajouter une transition douce pour le filtre */
+}
+
+.photo:hover {
+  filter: brightness(0.7); /* Assombrit l'image en réduisant la luminosité à 70% */
+}
+
+
+
+.modal-container {
+  display: none !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-container.opened {
+  opacity: 1;
+  display: flex !important;
+}
+
+.modal-container img {
+  max-height: 80vh;
+}
+
+.left-arrow,
+.right-arrow {
+  width: auto;
+  display: flex; /* Flèches - centrage vertical */
+  align-items: center;
+}
+
+.left-arrow .arrow-link,
+.right-arrow .arrow-link {
+  display: flex; /* Contenu horizontalement */
+  align-items: center; /* Centrer verticalement */
+  text-decoration: none;
+  color: white;
+  outline: none;
+  font-family: 'Space Mono', monospace;
+  font-size: 14px;
+  font-weight: 400;
+  margin: 20px;
+}
+
+.left-arrow > a > span:hover,
+.right-arrow > a > span:hover {
+  font-weight: 700;
+}
+
+
+.left-arrow .arrow-img-gauche {
+  filter: invert(100%); /* Inverser couleurs de l'image*/
+  margin-right: 10px;
+}
+
+.left-arrow .text {
+  order: 1; /* Placer le texte à droite de la flèche */
+}
+
+.right-arrow .arrow-img-droite {
+  filter: invert(100%); /* Inverser couleurs de l'image*/
+  margin-left: 10px;
+  order: 2; /* Placer la flèche à la fin, du côté droit */
+}
+
+
+.info-photo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.info-photo > span {
+  padding: 20px;
+  color: white;
+  font-family: 'Space Mono', monospace;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase !important;
+}
+
+
+/* Appliquer des styles spécifiques aux appareils mobiles dans une requête media */
+@media (max-width: 768px) {
+    .btn-close {
+      font-size: 18px;
+      padding: 20px;
+      right: 20px;
+      top: 10px;
+    }
+  
+    .modal-container {
+      padding: 1px;
+      z-index: 1000; /* Ajuster selon les besoins */
+      background: rgba(0, 0, 0, 0.8); /* Légèrement plus transparent */
+    }
+  
+    .modal-container img {
+      max-height: 60vh; /* Ajuster selon les besoins */
+      width: auto; /* Maintenir le rapport d'aspect */
+    }  
+
+    .left-arrow > a > span,
+    .right-arrow > a > span {
+        display: none;
+    }
+
+    .left-arrow {
+      width: 40px;
+      height: 40px;
+      padding: 10px;
+      position: absolute;
+      top: 44%;
+      left: -12px; /* Positionner la flèche de gauche à gauche */
+      transform: translateY(-50%); /* Centrer verticalement la flèche */
+    }
+  
+    .right-arrow {
+      width: 40px;
+      height: 40px;
+      padding: 10px;
+      position: absolute;
+      top: 44%;
+      right: 28px; /* Positionner la flèche de droite à droite */
+      transform: translateY(-50%); /* Centrer verticalement la flèche */
+    }
+  
+    .info-photo {
+      display: flex;
+      flex-direction: column; /* Empiler les éléments verticalement sur mobile */
+      align-items: center; /* Centrer les éléments horizontalement */
+    }
+  
+    .info-photo > span {
+      padding: 10px;
+      font-size: 14px;
+    }
+}

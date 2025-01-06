@@ -1,0 +1,197 @@
+/* 
+   Nom du fichier : classification-photos
+   
+*/
+
+/* PHOTO BLOCK - BOUTON CHARGER PLUS - FILTRES */
+/* Styles | Section CPT Thumbnails */
+.nathalie-thumbnails-containers {
+    max-width: 1126px;  /* Largeur maximale de la section */
+    margin: 0 auto;  /* Centre contenu horizontalement */
+    text-align: center; 
+    /*padding: 20px;*/
+}
+
+/* Styles | Container CPT Thumbnails */
+.conteneur-vignettes-accueil_nathalie
+ {
+    display: flex;  /* Flexbox pour les éléments enfants */
+    flex-wrap: wrap;  /* Passer à la ligne lorsque l'espace est insuffisant */
+    justify-content: space-between;  /* Espace entre les éléments de manière égale */
+    margin-top: 20px;  
+}
+
+/* Styles | Individual CPT Thumbnail */
+.nathalie-thumbnails-container {
+    flex-basis: calc(50% - 10px); /* Deux colonnes - Espace de 10px */  
+    margin-bottom: 20px; 
+}
+
+/* Styles | Thumbnail Image Wrapper */
+.nathalie-conteneur-vignette {
+    position: relative;  /* Établit un contexte de positionnement pour les éléments enfants */
+    overflow: hidden;  /* Cache le contenu débordant de la zone définie */
+    padding-bottom: 100%; 
+}
+
+/* Styles | Thumbnail Image */
+.nathalie-conteneur-vignette img {
+    position: absolute; 
+    top: 0;  /* Aligne l'image en haut */
+    left: 0;  /* Aligne l'image à gauche */
+    width: 100%; 
+    height: 100%;  
+    object-fit: cover;  /* Couvrir tout l'espace sans déformation */
+}
+
+/* Styles | Overlay and Icons */
+.nathalie-superposition-vignette {
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: rgba(0, 0, 0, 0.6); 
+    opacity: 0;  
+    display: flex;  
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;  
+    transition: opacity 0.3s;  /* Transition d'opacité avec une durée */
+}
+
+.nathalie-conteneur-vignette:hover .nathalie-superposition-vignette {
+    opacity: 1;  /* Survolé, l'overlay devient opaque */
+}
+
+.nathalie-superposition-vignette img {
+    width: 46px; 
+    height: 32px;  
+    position: absolute;  
+    top: 50%; 
+    left: 50%;  
+    transform: translate(-50%, -50%);  /* Centre l'image */
+}
+
+.fullscreen-icon {
+    color: white;  
+    position: absolute;  
+    top: 10px;  
+    right: 10px;
+}
+
+/* Styles | Voir toutes - Button Container */
+.afficher_toutes_publications {
+    display: flex;  
+    justify-content: center;  /* Centre horizontalement */
+    align-items: center;  /* Centre verticalement */
+    margin-top: 20px; 
+}
+
+/* Styles | Bouton de la page d'accueil */
+#afficher_plus {
+    display: flex; 
+    justify-content: center; 
+    align-items: center;  
+    width: 272px;  /* Largeur du bouton */
+    height: 50px;  /* Hauteur du bouton */
+    background-color: #D8D8D8;
+    color: #000000;  
+    text-decoration: none;  /* Supprime Décoration de texte */
+    border-radius: 2px;  
+    font-weight: bold;  
+    transition: .3s ease-in-out;  /* Transition de 0.3s - accélération/décélération */
+    cursor: pointer;  /* Curseur au survol */
+    font-family: Space Mono;  
+    font-size: 12px;  
+    font-weight: 400;  
+    line-height: 17.77px;  
+    letter-spacing: 0em;  
+    text-align: center;  
+    border: none;  /* Bordure du bouton */
+    margin-top: 20px;  
+}
+
+#afficher_plus:hover {
+    color: #ffffff;  /* Couleur du texte en survol */
+    background-color: #000000;  /* Couleur d'arrière-plan - Survol */
+}
+
+/* Filtres */
+.classification {
+    max-width: 1126px;  /* Largeur maximale - Section Filtres */
+    margin: 0 auto;  
+    text-align: center;  
+    /*padding-right: 25px; */ 
+    /*padding-left: 25px; */
+    padding-top: 40px; 
+    display: flex; 
+    justify-content: start;
+}
+
+.classification label, .classification select {
+    font-family: Poppins;  
+    font-size: 12px;  
+    font-weight: 500;  
+    line-height: 18px;  
+    letter-spacing: 0.03em;  
+    text-align: left;  
+    text-transform: uppercase;  
+}
+
+#filtre_categorie{
+    margin-right: 42px;
+}
+
+#trier_par_date{
+    margin-left: 310px;
+}
+
+#filtre_categorie,
+#format-filter,
+#trier_par_date{
+    width: 260px;  /* Largeur Filtres */
+    height: 42px;  /* Hauteur Filtres */
+    padding: 11px 18px 11px 18px;  /* Marge intérieure Filtres */
+    margin-bottom: 20px; 
+    border-radius: 8px;  /* Coins Filtres */
+    border: 1.3px solid #B8BBC2;  /* Bordure solide */
+    justify-content: space-between;
+}
+
+
+
+/* Media query - Filtres */
+@media (max-width: 768px) {
+    .classification {
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 20px; 
+    }
+
+    #filtre_categorie,
+    #format-filter,
+    #trier_par_date{
+        margin-bottom: 0; 
+}
+
+    #filtre_categorie,
+    #trier_par_date{
+        margin: 10px 0;
+    }
+
+}
+/* Styles for screens smaller than 768px*/
+@media (max-width: 768px) {
+    /* Supprime la disposition flex et ajuste la largeur des vignettes CPT individuelles. */
+    .conteneur-vignettes-accueil_nathalie
+ {
+        display: block;  /* Change la disposition en bloc pour les éléments enfants */
+    }
+    .nathalie-thumbnails-container {
+        flex-basis: 100%;  /* Largeur totale pour la disposition en colonne unique */
+    }
+    .nathalie-thumbnails-container {
+        margin-bottom: 10px;  /* Vous devrez peut-être ajuster les marges pour l'espacement */
+    }
+}

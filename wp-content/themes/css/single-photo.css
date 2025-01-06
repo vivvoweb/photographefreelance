@@ -1,0 +1,460 @@
+/* 
+   Nom du fichier : single-photo.css
+   Description : Ce fichier CSS définit les styles pour la page de photo.
+*/
+
+/* INFORMATION PHOTO - PHOTO - IMAGES LIÉES - BOUTONS MODALE - NAVIGATION ENTRE LES PHOTOS */
+/* Styles | Zone de contenu et la zone de contact */
+.zone-contenu-single,
+.section_contact_nathalie {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1126px;
+    margin: 0 auto;
+}
+
+/* Styles | Bouton Nathalie_bouton_photo */
+#Nathalie_bouton_photo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 232px;
+    height: 50px;
+    border-radius: 2px;
+    transition: .3s ease-in-out;
+    cursor: pointer;
+    font-family: Space Mono;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 17.77px;
+    letter-spacing: 0em;
+    text-align: center;
+    border: none;
+    background-color: #D8D8D8;
+    color: #000000;
+    text-decoration: none;
+}
+
+#Nathalie_bouton_photo:hover {
+    background-color: #cccaca;
+}
+
+/* Styles | Modale photo */
+.modal-photo {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.822);
+    overflow: auto;
+}
+
+/* Styles | Contenu de la modale photo */
+.photo-modal-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    max-width: 80%;
+    height: auto;
+    background-color: #fff;
+    padding: 20px;
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.8s;
+    animation-name: animatetop;
+    animation-duration: 0.8s;
+    animation-timing-function: ease;
+}
+
+/* Styles | Bouton de fermeture de la modale photo */
+.fermer-photo {
+    font-family: "Space Mono", monospace;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.fermer-photo:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.fermer-photo:hover {
+    text-decoration: underline;
+}
+
+/* Styles | Modale en version mobile */
+@media (max-width: 768px) {
+    .photo-modal-content {
+        max-width: 95%;
+        /*overflow-y: auto !important;*/
+        /*max-height: 71vh !important;*/
+    }
+    .section-contact-gauche {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        text-align: center;
+    }
+    .section-contact-gauche .texte-contact,
+    .section-contact-gauche div {
+        width: 100%;
+    }
+    .section_contact_nathalie {
+        justify-content: center;
+    }
+}
+
+/* Styles | Texte de contact */
+.texte-contact p {
+    font-family: Poppins;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 21px;
+}
+
+/* Styles | Partie gauche de la page */
+.section-gauche,
+.section-contact-gauche {
+    align-content: center;
+    flex: 1;
+    position: relative;
+    max-width: 49%;
+    height: auto;
+}
+
+/* Styles | Bordure basse de la partie gauche */
+.section-gauche,
+.section_contact_nathalie {
+    border-bottom: 2px solid #000;
+}
+
+/* Styles | Partie de contact à gauche */
+.section-contact-gauche {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+
+/* Styles | Titre dans la partie gauche */
+.section-gauche h1 {
+    font-family: 'Space Mono', monospace;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 66px;
+    line-height: 58px;
+    text-transform: uppercase;
+}
+
+/* Styles | Paragraphe dans la partie gauche */
+.section-gauche p {
+    font-family: 'Space Mono', monospace;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20.73px;
+    letter-spacing: 10%;
+    text-transform: uppercase;
+}
+
+/* Styles | Partie droite de la page et photos */
+.conteneur-droit,
+.photo {
+    flex: 1;
+    position: relative;
+    max-width: 50%;
+    height: auto;
+}
+
+/* Styles | Partie droite en version mobile */
+.conteneur-droit.mobile-first {
+    order: -1;
+}
+
+/* Styles | Image à l'intérieur de la partie photo */
+.photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Styles | Version mobile */
+@media (max-width: 768px) {
+    .zone-contenu-single,
+    .section_contact_nathalie,
+    .section-gauche,
+    .conteneur-droit {
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+
+    .section-gauche h1 {
+        font-size: 44px;
+    }
+
+    .zone-contenu-single.mobile-first {
+        flex-direction: column-reverse;
+    }
+
+    .conteneur-droit .photo img {
+        max-width: 100%;
+        height: auto;
+        width: auto;
+        object-fit: contain;
+    }
+
+    .section-contact-gauche {
+        flex-direction: column;
+        align-items: center;
+        max-width: 65%;
+    }
+
+    .section-contact-gauche .texte-contact,
+    .section-contact-gauche div {
+        width: 100%;
+    }
+}
+
+/* Styles | Écrans larges */
+@media (min-width: 1024px) {
+    .section-gauche {
+        padding-top: 52vh;
+    }
+
+    .conteneur-droit {
+        margin-left: 20px;
+    }
+}
+
+/* Styles | Flèches de navigation */
+@media (max-width: 768px) {
+    .section-contact-droit,
+    .prev-photo,
+    .next-photo {
+      display: none;
+    }
+}
+
+/* Styles | Conteneurs dans la partie de contact à droite */
+.section-contact-droit > div {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 10px 0 30px 10px;
+}
+
+/* Styles | Flèches d'images */
+.arrow-img {
+    width: 33px;
+    height: 10px;
+    margin: 0 5px; 
+    vertical-align: middle;
+}
+
+/* Styles | Flèches d'images gauche et droite au survol */
+.arrow-img-gauche,
+.arrow-img-droite {
+    transition: transform 0.2s ease;
+}
+
+.arrow-img-gauche:hover,
+.arrow-img-droite:hover {
+    transform: scale(1.2);
+}
+
+/* Styles | Conteneur des miniatures */
+.conteneur_de_vignettes {
+    text-align: center; 
+    width: 80px;
+    height: 80px; 
+}
+
+/* Styles | Images des miniatures */
+.conteneur_de_vignettes img {
+    max-width: 100%; 
+    max-height: 100%;
+}
+
+/* Styles | Image de la flèche gauche des miniatures */
+.conteneur_de_vignettes img.arrow-img-gauche {
+    display: block;
+    margin-right: 7px;
+    margin-top: 10px;
+}
+
+/* Styles | Image de la flèche droite des miniatures */
+.conteneur_de_vignettes img.arrow-img-droite {
+    display: block;
+    margin-top: -8px;
+    margin-left: 54px;
+}
+
+/* Styles | Section des images liées */
+.vous_aimerez_aussi {
+    max-width: 1126px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Styles | Titre de la section des images liées */
+.vous_aimerez_aussi h3 {
+    font-family: 'Space Mono', sans-serif;
+    font-size: 18px; 
+    font-weight: 400;
+    line-height: 26.66px;
+    letter-spacing: 0.1em;
+    text-align: left;
+}
+
+/* Styles | Conteneurs des images liées */
+.image-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px; 
+}
+
+/* Styles | Conteneurs des images liées individuelles */
+.related-image {
+    flex: 1;
+    margin-right: 10px;
+    text-align: center;
+}
+
+/* Styles | Images à l'intérieur des conteneurs d'images liées */
+.image-wrapper {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 100%;
+}
+
+/* Styles | Images à l'intérieur des conteneurs d'images liées */
+.image-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Styles pour les écrans de largeur inférieure à 768 pixels */
+
+@media (max-width: 768px) {
+    /* Modifier la mise en page des conteneurs d'images en une seule colonne */
+    .image-container {
+        display: block;
+    }
+
+    /* Ajuster la largeur et l'espacement des images associées individuelles */
+    .related-image {
+        flex: 1; /* Pleine largeur - une seule colonne */
+        margin-right: 0; /* Supprimer la marge droite pour l'espacement */
+        margin-bottom: 10px; /* Ajouter une marge inférieure pour l'espacement */
+    }
+
+}
+
+/* Styles | Conteneur du bouton de la page d'accueil */
+.home-button {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    margin-top: 20px;
+}
+
+/* Styles | Bouton de la page d'accueil */
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    width: 272px;
+    height: 50px;
+    background-color: #D8D8D8;
+    color: #000000;
+    text-decoration: none;
+    border-radius: 2px;
+    font-weight: bold;
+    transition: .3s ease-in-out;
+    cursor: pointer;
+    font-family: Space Mono;
+    font-size: 12px;
+    line-height: 17.77px;
+    letter-spacing: 0em;
+    text-align: center;
+    border: none;
+}
+
+.button:hover {
+    color: #ffffff;
+    background-color: #000000;
+}
+
+/* Styles | Superposition et Icônes */
+.nathalie-superposition-vignette-single {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s;
+    text-align: center;
+}
+
+.nathalie-superposition-vignette-single:hover {
+    opacity: 1;
+}
+
+.nathalie-info-photo {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    color: white;
+    font-family: 'Space Mono', monospace;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0.1em;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.nathalie-photo-gauche,
+.nathalie-photo-droite {
+    width: 60%;
+}
+
+.nathalie-superposition-vignette-single img {
+    width: 46px;
+    height: 32px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.fullscreen-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #fff;
+}
+  
+  

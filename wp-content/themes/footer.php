@@ -8,6 +8,7 @@
         ?>
     </nav>
 </footer>
+
 <?php wp_footer(); ?>
 <?php get_template_part('template_parts/modal/Nathalie_contact-modal-photo.php'); ?>
 

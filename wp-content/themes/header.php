@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Nathalie Mota</title>
-    <meta name="description" content="Photographe Freelance">
+    <meta name="description" content="Site Photographe Freelance">
     <meta name="keywords" content="Nathalie Mota">
     <meta name="author" content="RACHID ICHOU">
     
