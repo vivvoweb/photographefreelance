@@ -1,21 +1,14 @@
 <?php
 // Empêcher l'accès direct au fichier
-if (!defined('ABSPATH')) {
-    exit;
+// Enregistrer le menu principal
+function Nathalie_menu_principal() {
+    register_nav_menu('main-menu', __('Menu principal', 'text-domain')); // Enregistre le menu principal
 }
+add_action('after_setup_theme', 'Nathalie_menu_principal');
 
-/**
- * Enregistre une feuille de style principale
- */
-function mytheme_enqueue_styles() {
-    wp_enqueue_style('main-style', get_stylesheet_uri());
-}
-add_action('wp_enqueue_scripts', 'mytheme_enqueue_styles');
 
-/**
- * Active le support des images mises en avant
- */
-function mytheme_setup() {
-    add_theme_support('post-thumbnails'); // Active les images mises en avant
+// Enregistrer le menu du pied de page
+function Nathalie_footer_menu() {
+    register_nav_menu('footer-menu', __('Menu du pied de page', 'text-domain')); // Enregistre le menu du pied de page
 }
-add_action('after_setup_theme', 'mytheme_setup');
+add_action('after_setup_theme', 'Nathalie_footer_menu');
