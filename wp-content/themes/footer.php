@@ -1,7 +1,7 @@
 <footer>
     <nav class="footer-menu">
         <?php
-        // Affiche le menu de pied de page WordPress
+        // Implémentation d'un footer avec un menu de pied de page pour le site WordPress
         wp_nav_menu([
             'theme_location' => 'footer-menu', // Spécifie l'emplacement du menu dans le thème
         ]);
