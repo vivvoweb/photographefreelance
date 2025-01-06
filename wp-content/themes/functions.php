@@ -6,7 +6,6 @@ function Nathalie_menu_principal() {
 }
 add_action('after_setup_theme', 'Nathalie_menu_principal');
 
-
 // Enregistrer le menu du pied de page
 function Nathalie_footer_menu() {
     register_nav_menu('footer-menu', __('Menu du pied de page', 'text-domain')); // Enregistre le menu du pied de page
