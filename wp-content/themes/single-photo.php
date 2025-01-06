@@ -3,7 +3,6 @@
  * Modèle de page : Photo .
  * Description : Modèle de page pour une photo unique.
  */
-
 // Inclure l'en-tête de la page.
 get_header();
 ?>
