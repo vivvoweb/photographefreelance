@@ -56,7 +56,6 @@
                     </a>
                 </div>
             <?php endwhile; ?>
-
             <?php wp_reset_postdata(); // Restaure les données originales des publications ?>
         </div>
         <!-- Ajouter un bouton pour la page d'accueil -->
