@@ -14,6 +14,6 @@
 
         <!-- Formulaire de contact via Contact Form 7 -->
         <!-- Le shortcode '[contact-form-7 id="b4c5585" title="Formulaire de Contact"]' permet d'afficher un formulaire spécifique -->
-        <?php echo do_shortcode('[contact-form-7 id="b4c5585" title="Formulaire de Contact"]'); ?>
+        <?php echo do_shortcode('[contact-form-7 id="a2c6631" title="Contact sans refe"]'); ?>
     </div>
 </div>

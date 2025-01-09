@@ -19,6 +19,8 @@
     flex-wrap: wrap;  /* Passer à la ligne lorsque l'espace est insuffisant */
     justify-content: space-between;  /* Espace entre les éléments de manière égale */
     margin-top: 20px;  
+	     gap: 20px; /* Espace uniforme entre les éléments */
+
 }
 .conteneur_accueil_nathalie {
     display: flex;  /* Flexbox pour les éléments enfants */
@@ -52,11 +54,13 @@
 
 /* Styles | Overlay and Icons */
 .nathalie-superposition-vignette {
+	
+	
     position: absolute;
-    top: 0; 
+    bottom: 0; 
     left: 0; 
     width: 100%; 
-    height: 100%; 
+    height: 20%; 
     background: rgba(0, 0, 0, 0.6); 
     opacity: 0;  
     display: flex;  
@@ -64,6 +68,7 @@
     justify-content: center; 
     align-items: center;  
     transition: opacity 0.3s;  /* Transition d'opacité avec une durée */
+	
 }
 
 .nathalie-conteneur-vignette:hover .nathalie-superposition-vignette {

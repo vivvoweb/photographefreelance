@@ -1,5 +1,25 @@
+<div class='modal-container'>
+    <!-- Bouton fermer -->
+    <span class="btn-close">X</span>
+    <!-- Fleche -->
+    <div class="left-arrow"></div>
+    <div>
+        <!-- Image | Information de la Photo -->
+        <img src="" class="middle-image" />
+        <div class="info-photo">
+            <span id="modal-reference"></span>
+            <span id="modal-category"></span>
+        </div>
+    </div>
+    <!-- Fleche -->
+    <div class="right-arrow"></div>
+</div>
+
+
 <!-- Section | Miniatures Personnalisées -->
 <div class="vignette-personnalise_nathalie">
+			<div class="conteneur-droit">
+
     <!-- Champ caché pour la gestion de la page actuelle (utilisé pour pagination) -->
     <input type="hidden" name="page" value="1">
 
@@ -9,7 +29,7 @@
         // Arguments de la requête pour récupérer les publications personnalisées
         $args_custom_posts = array(
             'post_type' => 'photo',          // Type de publication personnalisée (ici 'photo')
-            'posts_per_page' => 8,           // Limite le nombre de publications affichées à 8
+            'posts_per_page' => 12,           // Limite le nombre de publications affichées à 8
             'orderby' => 'date',             // Trie les publications par date
             'order' => 'DESC',               // Tri décroissant (les plus récentes en premier)
         );        
@@ -21,16 +41,17 @@
         while ($custom_posts_query->have_posts()) :
             $custom_posts_query->the_post();
         ?>
-        <!-- Conteneur de chaque vignette individuelle -->
-        <div class="nathalie-thumbnails-container">
-            <!-- Lien vers la page de détail de l'image -->
-            <a href="<?php the_permalink(); ?>">
-                <?php if (has_post_thumbnail()) : ?>
-                    <!-- Conteneur pour l'image miniature -->
-                    <div class="nathalie-conteneur-vignette">
-                        <a href="<?php the_permalink(); ?>">
-                            <!-- Affichage de la miniature de l'image -->
+
+			<div class="nathalie-thumbnails-container">
+
+		<div class="nathalie-conteneur-vignette">
+                <i class="fas fa-expand-arrows-alt fullscreen-icon"></i><!-- Fullscreen icon -->
+
+
                             <?php the_post_thumbnail(); ?>
+					
+
+							                        <a href="<?php the_permalink(); ?>">
 
                             <!-- Section | Overlay (superposition d'informations au survol) -->
                             <div class="nathalie-superposition-vignette">
@@ -38,7 +59,6 @@
                                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icon_eye.png" alt="Icône de l'œil"> 
 
                                 <!-- Icône pour plein écran (envisagée pour un affichage en plein écran de l'image) -->
-                                <i class="fas fa-expand-arrows-alt fullscreen-icon"></i>
 
                                 <?php
                                 // Récupère la référence photo (champ personnalisé)
@@ -70,17 +90,21 @@
                                     </div>
                                 </div>
                             </div>
+								
                         </a>  
                     </div>
-                <?php endif; ?>
-            </a>
+                <!-- Icône fullscreen -->
         </div>
-        <?php endwhile; ?>
+
 
         <!-- Restauration des données d'origine après la boucle -->
         <?php wp_reset_postdata(); // Rétablir les données de publication d'origine ?>
 
-    </div>
+
+		<?php endwhile; ?>
+
+		        </div>
+	
 
     <!-- Bouton pour afficher plus de publications -->
     <div class="afficher_toutes_publications">

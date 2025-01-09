@@ -21,7 +21,6 @@ add_action('after_setup_theme', 'Nathalie_footer_menu');
 // -----------------------------------------------------------------
 // 2. Enregistrement des styles CSS
 // -----------------------------------------------------------------
-
 // Enregistrer les feuilles de style CSS
 function Nathalie_enqueue_styles() {
     wp_enqueue_style('GlobalNathalie.css', get_template_directory_uri() . '/css/GlobalNathalie.css', array(), '1.0', 'all'); // Style global
@@ -83,7 +82,8 @@ function load_more_posts() {
     // Configuration des arguments pour la requête WP
     $args_custom_posts = array(
         'post_type' => 'photo',  // Type de publication personnalisé 'photo'
-        'posts_per_page' => 12,  // Nombre de publications à charger par page
+        'posts_per_page' => 8,  // Nombre de publications à charger par page
+		
     );
 
     // Gestion des filtres de catégorie et de format
@@ -139,52 +139,77 @@ function load_more_posts() {
         while ($custom_posts_query->have_posts()) :
             $custom_posts_query->the_post(); // Préparer l'article suivant
             ?>
-            <div class="conteneur-vignettes-accueil_nathalie">
-                <div class="nathalie-thumbnails-container">
-                    <a href="<?php the_permalink(); ?>">
-                        <?php if (has_post_thumbnail()) : ?>
-                            <div class="nathalie-conteneur-vignette">
-                                <a href="<?php the_permalink(); ?>">
-                                    <?php the_post_thumbnail(); // Afficher la miniature ?>
-                                    <div class="nathalie-superposition-vignette">
-                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icon_eye.png" alt="Icône de l'œil"> <!-- Icône de l'œil -->
-                                        <i class="fas fa-expand-arrows-alt fullscreen-icon"></i> <!-- Icône de plein écran -->
-                                        <div class="nathalie-info-photo">
-                                            <div class="nathalie-photo-gauche">
-                                                <p><?php echo esc_html(get_field('reference_photo')); ?></p> <!-- Affiche la référence de la photo -->
-                                            </div>
-                                            <div class="nathalie-photo-droite">
-                                                <p><?php 
-                                                    // Affiche les catégories associées à la photo
-                                                    $related_categories = get_the_terms(get_the_ID(), 'categorie');
-                                                    $related_category_names = array();
-                                                    if ($related_categories) {
-                                                        foreach ($related_categories as $category) {
-                                                            $related_category_names[] = esc_html($category->name);
-                                                        }
-                                                    }
-                                                    echo implode(', ', $related_category_names); 
-                                                ?></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        <?php endif; ?>
-                    </a>
-                </div>
-            </div>
-            <?php
-        endwhile;
-        wp_reset_postdata(); // Réinitialiser les données de la requête
-    } else {
-        // Message si aucune publication n'est trouvée
-        echo 'Aucune publication à afficher.';
-    }
 
-    die(); // Terminer le processus AJAX
+
+    <!-- Champ caché pour la gestion de la page actuelle (utilisé pour pagination) -->
+
+    <!-- Conteneur des vignettes d'images -->
+
+			<div class="nathalie-thumbnails-container">
+		<div class="nathalie-conteneur-vignette">
+       <i class="fas fa-expand-arrows-alt fullscreen-icon"></i><!-- Fullscreen icon -->
+                            <?php the_post_thumbnail(); ?>
+
+							                        <a href="<?php the_permalink(); ?>">
+
+                            <!-- Section | Overlay (superposition d'informations au survol) -->
+                            <div class="nathalie-superposition-vignette">
+                                <!-- Icône de l'œil pour indiquer que l'on peut obtenir plus d'informations -->
+                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icon_eye.png" alt="Icône de l'œil"> 
+
+                                <!-- Icône pour plein écran (envisagée pour un affichage en plein écran de l'image) -->
+
+                                <?php
+                                // Récupère la référence photo (champ personnalisé)
+                                $related_reference_photo = get_field('reference');   // Récupère la référence de la photo
+
+                                // Récupère les catégories associées à la photo (taxonomie 'categorie')
+                                $related_categories = get_the_terms(get_the_ID(), 'categorie');   
+
+                                // Initialise un tableau pour stocker les noms des catégories
+                                $related_category_names = array();
+
+                                // Si des catégories sont associées à la photo, les ajouter au tableau
+                                if ($related_categories) {
+                                    foreach ($related_categories as $category) {
+                                        $related_category_names[] = esc_html($category->name);  // Nettoie et ajoute le nom de chaque catégorie
+                                    }
+                                }
+                                ?>
+
+                                <!-- Overlay avec la Référence et les Catégories de la photo -->
+                                <div class="nathalie-info-photo">
+                                    <div class="nathalie-photo-gauche">
+                                        <!-- Affiche la référence de la photo -->
+                                        <p><?php echo esc_html($related_reference_photo); ?></p>
+                                    </div>
+                                    <div class="nathalie-photo-droite">
+                                        <!-- Affiche les catégories associées à l'image -->
+                                        <p><?php echo implode(', ', $related_category_names); ?></p>
+                                    </div>
+                                </div>
+                            </div>
+								
+                        </a>  
+                    </div>
+                <!-- Icône fullscreen -->
+        
+
+      
+
+
+		        </div>
+
+        <?php
+            // Fin de la structure du contenu de l'article
+        endwhile;
+        wp_reset_postdata(); // Réinitialise les données des publications personnalisées
+    } else {
+        // Aucun autre article à charger
+    }
+    die();
 }
 
-// Associer la fonction AJAX à l'action 'wp_ajax_load_more_posts' (utilisateurs connectés) et 'wp_ajax_nopriv_load_more_posts' (utilisateurs non connectés)
-add_action('wp_ajax_load_more_posts', 'load_more_posts');
-add_action('wp_ajax_nopriv_load_more_posts', 'load_more_posts');
+add_action('wp_ajax_load_more_posts', 'load_more_posts'); // Associe la fonction 'load_more_posts' à l'action AJAX 'wp_ajax_load_more_posts'
+add_action('wp_ajax_nopriv_load_more_posts', 'load_more_posts'); // Associe la fonction 'load_more_posts' à l'action AJAX 'wp_ajax_nopriv_load_more_posts'
+

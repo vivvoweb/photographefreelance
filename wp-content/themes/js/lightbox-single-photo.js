@@ -3,6 +3,7 @@
   
 Ce script gère la fonctionnalité de la lightbox pour la navigation entre les photos dans une galerie. Il permet à l'utilisateur de visualiser une image dans un modèle (modale) et de naviguer entre les images à l'aide de flèches précédentes et suivantes.
 */
+
 // LIGHTBOX - NAVIGATION PHOTOS 
     // Ajouter une division modale lorsque l'on clique sur une image dans .conteneur-droit
     $('.conteneur-droit img').click(function(){

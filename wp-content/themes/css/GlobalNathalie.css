@@ -5,7 +5,7 @@
 /* EN-TÊTE - PIED DE PAGE - MODALES - FORMULAIRE DE CONTACT 7 */
 /* Styles | Global */
 body {
-    margin-top: 90px;
+    margin-top: 60px;
     background-color: #FFFFFF;
 }
 
@@ -237,6 +237,7 @@ header {
         max-height: 67vh; /* Contenu visible */
     }
 }
+
 
 /* Styles | Contact Form 7 */
 form {
@@ -476,7 +477,103 @@ input[type=submit]:hover {
         display: block;
     }
 }
+i.fas.fa-expand-arrows-alt.fullscreen-icon {
+    z-index: 1;
+}
+.custom-post-thumbnails {
+    max-width: 1126px;  /* Largeur maximale de la section */
+    margin: 0 auto;  /* Centre contenu horizontalement */
+    text-align: center; 
+    /*padding: 20px;*/
+}
 
+/* Styles | Container CPT Thumbnails */
+.thumbnail-container-accueil {
+    display: flex;  /* Flexbox pour les éléments enfants */
+    flex-wrap: wrap;  /* Passer à la ligne lorsque l'espace est insuffisant */
+    justify-content: space-between;  /* Espace entre les éléments de manière égale */
+    margin-top: 20px;  
+}
+
+/* Styles | Individual CPT Thumbnail */
+.custom-post-thumbnail {
+    flex-basis: calc(50% - 10px); /* Deux colonnes - Espace de 10px */  
+    margin-bottom: 20px; 
+}
+
+/* Styles | Thumbnail Image Wrapper */
+.thumbnail-wrapper {
+    position: relative;  /* Établit un contexte de positionnement pour les éléments enfants */
+    overflow: hidden;  /* Cache le contenu débordant de la zone définie */
+    padding-bottom: 100%; 
+}
+
+/* Styles | Thumbnail Image */
+.thumbnail-wrapper img {
+    position: absolute; 
+    top: 0;  /* Aligne l'image en haut */
+    left: 0;  /* Aligne l'image à gauche */
+    width: 100%; 
+    height: 100%;  
+    object-fit: cover;  /* Couvrir tout l'espace sans déformation */
+}
+
+/* Styles | Overlay and Icons */
+.thumbnail-overlay {
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: rgba(0, 0, 0, 0.6); 
+    opacity: 0;  
+    display: flex;  
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;  
+    transition: opacity 0.3s;  /* Transition d'opacité avec une durée */
+}
+
+.thumbnail-wrapper:hover .thumbnail-overlay {
+    opacity: 1;  /* Survolé, l'overlay devient opaque */
+}
+
+.thumbnail-overlay img {
+    width: 46px; 
+    height: 32px;  
+    position: absolute;  
+    top: 50%; 
+    left: 50%;  
+    transform: translate(-50%, -50%);  /* Centre l'image */
+}
+
+.fullscreen-icon {
+    color: white;  
+    position: absolute;  
+    top: 10px;  
+    right: 10px;
+}
+.photo-info {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    color: white;
+    font-family: 'Space Mono', monospace;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0.1em;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.photo-info-left,
+.photo-info-right {
+    width: 60%;
+}
 @media (min-width: 768px) {
     .Nathalie_section-logo
 
@@ -534,3 +631,4 @@ input[type=submit]:hover {
         height: 400px; /* Hauteur - Mobiles */
     }
 }
+

@@ -9,7 +9,7 @@
         <span class="fermer-photo">X</span>
         <img src="<?php echo esc_url(wp_get_attachment_url(55)); ?>" alt="Contact" />
         <!-- Contact Form 7 Shortcode -->
-        <?php echo do_shortcode('[contact-form-7 id="b4c5585" title="Contact form 1"]'); ?>
+        <?php echo do_shortcode('[contact-form-7 id="b4c5585" title="Contact-Photo"]'); ?>
     </div>
 
 </div>

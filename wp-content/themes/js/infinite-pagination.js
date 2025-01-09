@@ -1,11 +1,14 @@
+/* 
+   Nom du fichier : infinite-pagination.js
+   ainsi que l'application de filtres sur la page, à partir du fichier functions.php.
+*/
+// CHARGER PLUS (PHOTOS) + FILTRES (FUNCTIONS.PHP)
 let loading = false; // Indique si le chargement est en cours ou non
-const $chargerPlus = $('#load-more-posts'); // Sélectionne le bouton "Charger plus"
-const $container = $('.vignette-personnalise_nathalie'); // Sélectionne le conteneur de vignettes
+const $loadMoreButton = $('#load-more-posts'); // Sélectionne le bouton "Charger plus"
+const $container = $('.conteneur-vignettes-accueil_nathalie'); // Sélectionne le conteneur de vignettes
 
-$chargerPlus.on('click', function () {
-    if (!loading) { // Empêche de cliquer si un chargement est déjà en cours
-        get_more_posts(true); // Appelle la fonction pour obtenir plus de publications
-    }
+$loadMoreButton.on('click', function () {
+    get_more_posts(true) // Appelle la fonction pour obtenir plus de publications
 });
 
 function get_more_posts(load) {
@@ -17,10 +20,6 @@ function get_more_posts(load) {
     const dateSort = $('select[name="trier_par_date"]').val();
 
     console.log(category, format, dateSort, page);
-
-    // Désactivation du bouton pendant le chargement
-    $chargerPlus.prop('disabled', true);
-    $chargerPlus.text('Chargement en cours...');
 
     $.ajax({
         type: 'GET',
@@ -39,29 +38,23 @@ function get_more_posts(load) {
                 } else {
                     $container.html(response); // Remplace le contenu du conteneur par la réponse (nouvelles publications)
                 }
-                $chargerPlus.text('Charger plus'); // Remet le texte du bouton à "Charger plus"
+                $loadMoreButton.text('Charger plus'); // Remet le texte du bouton à "Charger plus"
                 inputPage.val(page); // Met à jour le numéro de page
                 loading = false; // Indique que le chargement est terminé
-                $chargerPlus.prop('disabled', false); // Réactive le bouton
             } else {
                 if (load) {
-                    $chargerPlus.text('Fin des publications'); // Change le texte du bouton en "Fin des publications"
+                    $loadMoreButton.text('Fin des publications'); // Change le texte du bouton en "Fin des publications"
                 } else {
                     let txt = '<div style="text-align:center;width:100%; color: #000;font-family: Space Mono, monospace;font-size: 16px;"><p>Aucun résultat ne correspond aux filtres de recherche.<br>';
                     $container.html(txt); // Affiche un message si aucune réponse n'est trouvée
                 }
-                $chargerPlus.prop('disabled', false); // Réactive le bouton si aucun résultat
             }
         },
-        error: function (xhr, status, error) {
-            console.error("Erreur AJAX:", status, error); // Affiche une erreur dans la console si la requête échoue
-            $chargerPlus.text('Erreur lors du chargement'); // Affiche un message d'erreur
-            $chargerPlus.prop('disabled', false); // Réactive le bouton
-            loading = false;
-        }
     });
-
-    loading = true; // Indique que le chargement est en cours
+    if (!loading) {
+        loading = true;
+        $loadMoreButton.text('Chargement en cours...'); // Change le texte du bouton en "Chargement en cours..."
+    }
 }
 
 function recursive_change(selectId) {

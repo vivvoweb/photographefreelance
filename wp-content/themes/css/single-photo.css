@@ -171,7 +171,6 @@
 .photo {
     flex: 1;
     position: relative;
-    max-width: 50%;
     height: auto;
 }
 
